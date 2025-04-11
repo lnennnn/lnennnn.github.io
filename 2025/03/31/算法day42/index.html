@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>算法day42 | lne's blog page</title><meta name="author" content="lne"><meta name="copyright" content="lne"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="买卖股票的最佳时机IV本题的限制买卖次数不再为固定值，而是一个变量，增加一个循环就好 12345678910111213141516class Solution:    def maxProfit(self, k: int, prices: List[int]) -&gt; int:        # 0-误操作 奇数-持有 偶数-卖出        n &#x3D; 2 * k + 1        dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法day42">
+<meta property="og:url" content="http://lnennnn.github.io/2025/03/31/%E7%AE%97%E6%B3%95day42/index.html">
+<meta property="og:site_name" content="lne&#39;s blog page">
+<meta property="og:description" content="买卖股票的最佳时机IV本题的限制买卖次数不再为固定值，而是一个变量，增加一个循环就好 12345678910111213141516class Solution:    def maxProfit(self, k: int, prices: List[int]) -&gt; int:        # 0-误操作 奇数-持有 偶数-卖出        n &#x3D; 2 * k + 1        dp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2025-03-31T08:54:17.000Z">
+<meta property="article:modified_time" content="2025-04-03T09:35:01.363Z">
+<meta property="article:author" content="lne">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "算法day42",
+  "url": "http://lnennnn.github.io/2025/03/31/%E7%AE%97%E6%B3%95day42/",
+  "image": "https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png",
+  "datePublished": "2025-03-31T08:54:17.000Z",
+  "dateModified": "2025-04-03T09:35:01.363Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "lne",
+      "url": "http://lnennnn.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lnennnn.github.io/2025/03/31/%E7%AE%97%E6%B3%95day42/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法day42',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">lne's blog page</span></a><a class="nav-page-title" href="/"><span class="site-name">算法day42</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">算法day42</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-31T08:54:17.000Z" title="发表于 2025-03-31 16:54:17">2025-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-03T09:35:01.363Z" title="更新于 2025-04-03 17:35:01">2025-04-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="买卖股票的最佳时机IV"><a href="#买卖股票的最佳时机IV" class="headerlink" title="买卖股票的最佳时机IV"></a>买卖股票的最佳时机IV</h2><p>本题的限制买卖次数不再为固定值，而是一个变量，增加一个循环就好</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, k: <span class="built_in">int</span>, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 0-误操作 奇数-持有 偶数-卖出</span></span><br><span class="line">        n = <span class="number">2</span> * k + <span class="number">1</span></span><br><span class="line">        dp = [<span class="number">0</span>] * n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n, <span class="number">2</span>):</span><br><span class="line">            dp[i] = -prices[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(prices)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">if</span> j % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">                    dp[j] = <span class="built_in">max</span>(dp[j], dp[j-<span class="number">1</span>] - prices[i])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[j] = <span class="built_in">max</span>(dp[j], dp[j-<span class="number">1</span>] + prices[i])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="买卖股票的最佳时机含冷冻期"><a href="#买卖股票的最佳时机含冷冻期" class="headerlink" title="买卖股票的最佳时机含冷冻期"></a>买卖股票的最佳时机含冷冻期</h2><p>在 <code>买卖股票的最佳时机II</code> 的基础上进行修改，对持股状态的转移方程进行修改：</p>
+<ul>
+<li>持股状态 dp[i][0]<ul>
+<li>保持原有的持股状态 <code>dp[i-1][0]</code></li>
+<li>利用冷冻期限制，只有在 i-2 天不持股后才能在第 i 天买入，因此使用 <code>dp[i-2][1] if i &gt; 1 else 0) - prices[i]</code>。</li>
+</ul>
+</li>
+<li>不持股状态 dp[i][1]:<ul>
+<li>保持之前的不持股状态：<code>dp[i-1][1]</code></li>
+<li>当天卖出，即之前持股状态 <code>dp[i-1][0] + prices[i]</code>。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(prices) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="comment"># 0-持股 1-不持股</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * <span class="number">2</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(prices))]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = -prices[<span class="number">0</span>]</span><br><span class="line">        dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="built_in">max</span>(-prices[<span class="number">0</span>], -prices[<span class="number">1</span>])</span><br><span class="line">        dp[<span class="number">1</span>][<span class="number">1</span>] = <span class="built_in">max</span>(<span class="number">0</span>, prices[<span class="number">1</span>] - prices[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(prices)):</span><br><span class="line">            dp[i][<span class="number">0</span>] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">2</span>][<span class="number">1</span>] - prices[i])</span><br><span class="line">            dp[i][<span class="number">1</span>] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] + prices[i])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp[-<span class="number">1</span>][<span class="number">0</span>], dp[-<span class="number">1</span>][<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="买股票的最佳时机含手续费"><a href="#买股票的最佳时机含手续费" class="headerlink" title="买股票的最佳时机含手续费"></a>买股票的最佳时机含手续费</h2><p>在 <code>买卖股票的最佳时机II</code> 的基础上进行修改，在卖出股票的时候减去手续费即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>], fee: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 0-持有 1-不持有</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * <span class="number">2</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(prices))]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = -prices[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(prices)):</span><br><span class="line">            dp[i][<span class="number">0</span>] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>] - prices[i])</span><br><span class="line">            dp[i][<span class="number">1</span>] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] + prices[i] - fee)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp[-<span class="number">1</span>][<span class="number">0</span>], dp[-<span class="number">1</span>][<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h2><p>子序列问题是动态规划解决的经典问题，本题主要是明确dp数组的含义以及递推关系</p>
+<p>dp数组定义：</p>
+<ul>
+<li>dp[i]表示以nums[i]结尾的数组的最长子序列长度（即子序列的末尾一定是nums[i]）</li>
+</ul>
+<p>递推关系：</p>
+<ul>
+<li>遍历i之前的dp数组（j &lt; i），如果nums[i]比nums[j]大，则更新dp[i]，取dp[j] + 1的最大值</li>
+<li>dp[i] &#x3D; max(dp[j] + 1, dp[i])</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lengthOfLIS</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        dp = [<span class="number">1</span>] * <span class="built_in">len</span>(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">                <span class="keyword">if</span> nums[i] &gt; nums[j]:</span><br><span class="line">                    dp[i] = <span class="built_in">max</span>(dp[j] + <span class="number">1</span>, dp[i])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br></pre></td></tr></table></figure>
+
+<h2 id="最长连续递增子序列"><a href="#最长连续递增子序列" class="headerlink" title="最长连续递增子序列"></a>最长连续递增子序列</h2><p>dp数组定义与上题一样，但递推关系有变，且只需要与前一个数进行比较</p>
+<ul>
+<li>比前一个数大：dp[i] &#x3D; dp[i-1]</li>
+<li>else：dp[i] &#x3D; 1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findLengthOfLCIS</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        dp = [<span class="number">1</span>] * <span class="built_in">len</span>(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i-<span class="number">1</span>]:</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br></pre></td></tr></table></figure>
+
+<h2 id="最长重复子数组"><a href="#最长重复子数组" class="headerlink" title="最长重复子数组"></a>最长重复子数组</h2><p>这里需要定义一个二维dp数组，含义如下：</p>
+<ul>
+<li>dp[i][j]表示以nums1以nums[i-1]结尾的子数组和nums2以nums2[j-1]结尾的子数组的最长重复子数组长度</li>
+</ul>
+<p>递推方式和 <code>最长连续递增子序列</code> 其实差不多（强调连续），但初始化上不一样，本题需要初始化为0。本题dp数组的第一行和第一列其实无实际意义，只是为了方便进行递推，故在定义dp数组的时候行数和列数都得+1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findLength</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        len1 = <span class="built_in">len</span>(nums1)</span><br><span class="line">        len2 = <span class="built_in">len</span>(nums2)</span><br><span class="line">        <span class="comment"># len1+1行 len2+1列</span></span><br><span class="line">        <span class="comment"># dp[i][j]表示以nums1以nums[i-1]结尾的子数组和nums2以nums2[j-1]结尾的子数组的最长重复子数组长度</span></span><br><span class="line">        <span class="comment"># dp[0][:]和dp[:][0]初始化为0</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * (len2+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(len1+<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, len1+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, len2+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> nums1[i-<span class="number">1</span>] == nums2[j-<span class="number">1</span>]:</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> dp[i][j] &gt; res:</span><br><span class="line">                    res = dp[i][j]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://lnennnn.github.io">lne</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://lnennnn.github.io/2025/03/31/%E7%AE%97%E6%B3%95day42/">http://lnennnn.github.io/2025/03/31/%E7%AE%97%E6%B3%95day42/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://lnennnn.github.io" target="_blank">lne's blog page</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">lne</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lnennnn"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机IV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F"><span class="toc-number">2.</span> <span class="toc-text">买卖股票的最佳时机含冷冻期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%B0%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9"><span class="toc-number">3.</span> <span class="toc-text">买股票的最佳时机含手续费</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">最长递增子序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-number">5.</span> <span class="toc-text">最长连续递增子序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-number">6.</span> <span class="toc-text">最长重复子数组</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/11/%E8%93%9D%E6%A1%A5%E6%9D%AF/" title="蓝桥杯"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯"/></a><div class="content"><a class="title" href="/2025/04/11/%E8%93%9D%E6%A1%A5%E6%9D%AF/" title="蓝桥杯">蓝桥杯</a><time datetime="2025-04-11T01:25:41.000Z" title="发表于 2025-04-11 09:25:41">2025-04-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/04/%E7%AE%97%E6%B3%95day47/" title="算法day47"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法day47"/></a><div class="content"><a class="title" href="/2025/04/04/%E7%AE%97%E6%B3%95day47/" title="算法day47">算法day47</a><time datetime="2025-04-04T03:26:40.000Z" title="发表于 2025-04-04 11:26:40">2025-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/03/%E7%AE%97%E6%B3%95day45/" title="算法day45"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法day45"/></a><div class="content"><a class="title" href="/2025/04/03/%E7%AE%97%E6%B3%95day45/" title="算法day45">算法day45</a><time datetime="2025-04-03T13:21:38.000Z" title="发表于 2025-04-03 21:21:38">2025-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/03/%E7%AE%97%E6%B3%95day44/" title="算法day44"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法day44"/></a><div class="content"><a class="title" href="/2025/04/03/%E7%AE%97%E6%B3%95day44/" title="算法day44">算法day44</a><time datetime="2025-04-03T10:27:04.000Z" title="发表于 2025-04-03 18:27:04">2025-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/03/%E7%AE%97%E6%B3%95day43/" title="算法day43"><img src="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法day43"/></a><div class="content"><a class="title" href="/2025/04/03/%E7%AE%97%E6%B3%95day43/" title="算法day43">算法day43</a><time datetime="2025-04-03T09:54:12.000Z" title="发表于 2025-04-03 17:54:12">2025-04-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By lne</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
